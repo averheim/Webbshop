@@ -1,0 +1,13 @@
+{
+  "name": "webbshop",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "start": "lite-server"
+  },
+  "author": "Markus Averheim",
+  "license": "ISC",
+  "devDependencies": {
+    "lite-server": "^2.3.0"
+  }
+}

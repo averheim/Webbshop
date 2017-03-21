@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <base href="/">
+    <title>Nackbutik</title>
+
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+          crossorigin="anonymous">
+
+    <link rel="stylesheet" href="style.css">
+
+    <script src="bower_components/angular/angular.min.js"></script>
+    <script src="bower_components/angular-animate/angular-animate.min.js"></script>
+    <script src="bower_components/angular-bootstrap/ui-bootstrap.min.js"></script>
+    <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+    <script src="bower_components/angular-route/angular-route.min.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <script src="app/app.module.js"></script>
+    <script src="app/app.config.js"></script>
+    <script src="app/app.controller.js"></script>
+    <script src="app/app.service.js"></script>
+
+    <script src="app/product/product.module.js"></script>
+    <script src="app/product/product.service.js"></script>
+    <script src="app/product/product.controller.js"></script>
+
+    <script src="app/category/category.module.js"></script>
+    <script src="app/category/category.controller.js"></script>
+    <script src="app/category/category.service.js"></script>
+
+    <script src="app/login/login.module.js"></script>
+    <script src="app/login/login.controller.js"></script>
+    <script src="app/login/login.service.js"></script>
+
+    <script src="app/cart/cart.module.js"></script>
+    <script src="app/cart/cart.controller.js"></script>
+    <script src="app/cart/cart.service.js"></script>
+
+    <script src="app/new_user/new-user.module.js"></script>
+    <script src="app/new_user/new-user.controller.js"></script>
+    <script src="app/new_user/new-user.service.js"></script>
+
+    <script src="app/user/user.module.js"></script>
+    <script src="app/user/user.controller.js"></script>
+    <script src="app/user/user.service.js"></script>
+
+    <script src="app/user/order-details.controller.js"></script>
+
+
+</head>
+
+<body ng-app="app" ng-controller="productController">
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/" ng-controller="categoryController" ng-click="categoryChosen(0)">NackButik</a>
+        </div>
+        <ul class="nav navbar-nav">
+            <li><a href="/" ng-click="categoryChosen(0)">Alla produkter</a></li>
+            <li uib-dropdown ng-controller="categoryController">
+                <a uib-dropdown-toggle>Kategorier<span class="caret"></span></a>
+                <ul uib-dropdown-menu uib-collapse="!isCollapsed" class="dropdown-menu" >
+                    <li ng-repeat="category in categories" id="{{category.id}}" ng-click="categoryChosen(category)"  class="list-group-item"><a>{{category.name}}</a></li>
+                </ul>
+            </li>
+            <li>
+            <li><a href="/cart">Kundvagn</a></li>
+            </li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="/new-user"><span class="glyphicon glyphicon-user"></span> Skapa användare</a></li>
+            <li ng-controller="loginController"><a id="login" href="/login"><span class="glyphicon glyphicon-log-in"></span> Logga in</a></li>
+        </ul>
+        <form class="navbar-form navbar-right">
+            <div class="form-group">
+                <input ng-model="search" type="text" class="form-control" placeholder="Sök">
+            </div>
+
+        </form>
+    </div>
+</nav>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-9 col-md-offset-1" ng-view="">
+                <!-- innehåll -->
+            </div>
+        </div>
+    </div>
+
+</body>
+<footer class="navbar-bottom">
+    <hr>
+    <p id="footer-text">Copyright 2017 &copy;</p>
+</footer>
+</html>

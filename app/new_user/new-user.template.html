@@ -1,0 +1,44 @@
+<h1 class="text-center">Fyll i formuläret.</h1>
+   <h3 class="text-center">Alla fält måste vara fyllda för att gå vidare!</h3>
+<div class="col-md-4 col-md-offset-4">
+<form name="newuser" novalidate>
+    <div class="form-group" ng-class="{ 'has-error': newuser.firstname.$invalid && newuser.firstname.$touched}">
+        <label for="firstname">Förnamn<br><span class="error" ng-if="newuser.firstname.$invalid && newuser.firstname.$touched">Du måste fylla i ditt förnamn</span></label>
+        <input type="text" class="form-control" id="firstname" name="firstname" placeholder="Förnamn" ng-model="firstname" required>
+    </div>
+    <div class="form-group" ng-class="{ 'has-error': newuser.lastname.$invalid && newuser.lastname.$touched}">
+        <label for="lastname">Efternamn<br><span class="error" ng-if="newuser.lastname.$invalid && newuser.lastname.$touched">Du måste fylla i ditt efternamn</span></label>
+        <input type="text" class="form-control" id="lastname" name="lastname" placeholder="Efternamn" ng-model="lastname" required>
+    </div>
+    <div class="form-group" ng-class="{ 'has-error': newuser.phone.$invalid && newuser.phone.$touched}">
+        <label for="phone">Telefon<br><span class="error" ng-if="newuser.phone.$invalid && newuser.phone.$touched">Du måste fylla i ditt telefonnummer</span></label>
+        <input type="number" class="form-control" id="phone" name="phone" placeholder="Telefon" ng-model="phone" required>
+    </div>
+    <div class="form-group" ng-class="{ 'has-error': newuser.address.$invalid && newuser.address.$touched}">
+        <label for="address">Adress<br><span class="error" ng-if="newuser.address.$invalid && newuser.address.$touched">Du måste fylla i din adress</span></label>
+        <input type="text" class="form-control" id="address" name="address" placeholder="Adress" ng-model="address" required>
+    </div>
+    <div class="form-group" ng-class="{ 'has-error': newuser.postalcode.$invalid && newuser.postalcode.$touched}">
+        <label for="postalcode">Postkod<br><span class="error" ng-if="newuser.postalcode.$invalid && newuser.postalcode.$touched">Du måste fylla i din postkod</span></label>
+        <input type="number" class="form-control" id="postalcode" name="postalcode" placeholder="Postkod" ng-model="postalnumber" required>
+    </div>
+    <div class="form-group" ng-class="{ 'has-error': newuser.city.$invalid && newuser.city.$touched}">
+        <label for="city">Stad<br><span class="error" ng-if="newuser.city.$invalid && newuser.city.$touched">Du måste fylla i din stad</span></label>
+        <input type="text" class="form-control" id="city" name="city" placeholder="Stad" ng-model="city" required>
+    </div>
+
+    <hr>
+
+    <div class="form-group" ng-class="{ 'has-error': newuser.email.$invalid && newuser.email.$touched}">
+        <label for="email">Epost<br><span class="error" ng-if="newuser.email.$invalid && newuser.email.$touched">Du måste fylla i din epost</span></label>
+        <input type="email" class="form-control" id="email" name="email" placeholder="Epost" ng-model="email" required>
+    </div>
+    <div class="form-group" ng-class="{ 'has-error': newuser.password.$invalid && newuser.password.$touched}">
+        <label for="password">Lösenord<br><span class="error" ng-if="newuser.password.$invalid && newuser.password.$touched">Du måste fylla i ditt lösenord</span></label>
+        <input type="password" class="form-control" id="password" name="password" placeholder="Lösenord" ng-model="password" required>
+    </div>
+
+    <button ng-disabled="newuser.$invalid" class="btn btn-default" ng-click="create()">Registrera</button>
+    <p class="error">{{errorMessage}}</p>
+</form>
+</div>

@@ -1,0 +1,19 @@
+<ul class="list-group" ng-controller="productController">
+    <li class="list-group-item" ng-repeat="product in product">
+        <div class="row">
+            <div class="col-md-5">
+                <img class="product-img" src="{{product.imageUrl}}" alt="">
+            </div>
+            <div class="col-md-6">
+                <p>{{product.name}}</p>
+                <p>Pris: {{product.price}};-</p>
+                <p>Antal i lager: {{product.unitsInStock}} st</p>
+                <button data-toggle="collapse" data-target="#{{product.id}}" class="btn btn-danger">Visa info</button>
+
+                <div id="{{product.id}}" class="collapse">
+                    {{product.description}}
+                </div>
+            </div>
+        </div>
+    </li>
+</ul>

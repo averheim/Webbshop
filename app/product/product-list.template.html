@@ -1,0 +1,36 @@
+<ul class="list-group">
+    <li class="list-group-item" ng-repeat="product in product | filter: {categoryId:categoryFilter} | filter: search">
+        <div class="row">
+            <div class="col-md-5">
+                <img class="product-img" ng-src="{{product.imageUrl}}" alt="{{product.description}}">
+            </div>
+            <div class="col-md-6">
+
+                <p>{{product.name}}</p>
+                <p>Pris: {{product.price}};-</p>
+                <p>Antal i lager: {{product.unitsInStock}} st</p>
+
+                <button ng-click="infoBoxIsOpen = !infoBoxIsOpen" class="btn btn-primary">Visa info</button>
+
+                <div ng-init="infoBoxIsOpen = false" ng-show="infoBoxIsOpen">
+                    <p>{{product.description}}</p>
+                </div>
+
+                <form>
+                    <div class="form-group col-md-4 col-md-offset-7" ng-controller="cartController">
+                        <button class="btn btn-danger"  ng-click="addToCart(product)" ng-disabled="checkStock(product.unitsInStock)">Lägg till i kungvagn</button>
+<!--
+                        <input type="number" min="1" max="{{product.unitsInStock}}" value="1" class="form-control" ng-model="amount.value" ng-disabled="checkStock(product.unitsInStock)" required>
+-->
+
+                        <select class="form-control" ng-model="amount" ng-init="amount='1'">
+                            <option ng-repeat="amount in productsInStock(product)" value="{{amount}}" ng-disabled="checkStock(product.unitsInStock)">{{amount}}</option>
+                        </select>
+
+
+                    </div>
+                </form>
+            </div>
+        </div>
+    </li>
+</ul>

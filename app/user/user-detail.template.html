@@ -1,0 +1,30 @@
+<div class="row" ng-init="getData()">
+    <div class="col-md-5 jumbotron">
+        <form class="form-group">
+            <input type="text" class="form-control" ng-model="firstname">
+            <input type="text" class="form-control" ng-model="lastname">
+            <input type="text" class="form-control" ng-model="email">
+            <input type="text" class="form-control" ng-model="phone">
+            <input type="text" class="form-control" ng-model="address">
+            <input type="text" class="form-control" ng-model="postalcode">
+            <input type="text" class="form-control" ng-model="city">
+            <input type="password" class="form-control" ng-model="password">
+
+            <button class="btn btn-danger" ng-click="updateUser()">Uppdatera</button>
+        </form>
+    </div>
+    <div class="col-md-7">
+        <table class="table">
+            <thead>
+                <th>Ordernummer</th>
+                <th>Datum</th>
+            </thead>
+            <tbody class="table-hover" ng-repeat="order in userOrders" >
+                <td>{{order.id}}</td>
+                <td>{{order.dateTime}}</td>
+                <td><button class="btn" ng-click="showDetailInfo(order.id)">Detaljerad info</button></td>
+            </tbody>
+        </table>
+
+    </div>
+</div>

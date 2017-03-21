@@ -1,0 +1,22 @@
+<div class="jumbotron">
+    <p>Ordernummer: {{order.id}}</p>
+    <p>Kund: {{customer.firstName}} {{customer.lastName}}</p>
+    <p>Datum: {{date}}</p>
+    <p>Tid: {{time}}</p>
+
+    <table class="table">
+        <thead>
+            <th>Produktnummer</th>
+            <th>Namn</th>
+            <th>Pris</th>
+            <th>Antal</th>
+        </thead>
+        <tbody ng-repeat="product in products">
+            <td>{{product.id}}</td>
+            <td>{{product.name}}</td>
+            <td>{{product.price}}</td>
+            <td>{{product.quantity}}</td>
+        </tbody>
+    </table>
+    <p>Totalbelopp: {{total}}</p>
+</div>

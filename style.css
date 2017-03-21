@@ -1,0 +1,14 @@
+#footer-text {
+    text-align: center;
+}
+
+.product-img {
+    width: 40%;
+    height: 40%;
+}
+.error {
+    color: red;
+}
+.text-center {
+    text-align: center;
+}
