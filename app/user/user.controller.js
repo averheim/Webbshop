@@ -52,7 +52,9 @@ angular.module("user").controller("userController", ["$scope", "$location", "$ht
         console.log($scope.postalcode);
         console.log($scope.city);
         console.log($scope.password);
-        userFactoryService.updateUserInfo(user.customerId, userInfo);
+        userFactoryService.updateUserInfo(user.customerId, userInfo).then(function (response) {
+            console.log(response);
+        });
 
     };
 
