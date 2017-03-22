@@ -44,6 +44,14 @@ angular.module("user").controller("userController", ["$scope", "$location", "$ht
         };
 
         console.log(user.customerId);
+        console.log($scope.firstname);
+        console.log($scope.lastname);
+        console.log($scope.email);
+        console.log($scope.phone);
+        console.log($scope.address);
+        console.log($scope.postalcode);
+        console.log($scope.city);
+        console.log($scope.password);
         userFactoryService.updateUserInfo(user.customerId, userInfo);
 
     };
