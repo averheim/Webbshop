@@ -8,7 +8,7 @@ angular.module("login").factory("loginServiceFactory", ["$http", "$location", fu
         logIn   :   function (inEmail, inPassword) {
 
             return $http.post("http://nackbutik.azurewebsites.net/api/customer/login", {
-                email   :   inEmail,
+                email       :   inEmail,
                 password    :   inPassword
             }).then(function (response) {
 
