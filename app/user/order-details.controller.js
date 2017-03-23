@@ -1,8 +1,8 @@
-angular.module("user").controller("orderDetailsController", ["$scope", "$routeParams", "userFactoryService", function($scope, $routeParams, userFactoryService) {
+angular.module("user").controller("orderDetailsController", ["$scope", "$routeParams", "userFactoryService", "productServiceFactory", function($scope, $routeParams, userFactoryService, productServiceFactory) {
     var productDetails = [];
     $scope.total = 0;
     //Hämta orderInfo
-    userFactoryService.getOrderById($routeParams.id).then(function(response) {
+    productServiceFactory.getOrderById($routeParams.id).then(function(response) {
         //Variabler
         var orderInfo = response.data;
         var orderProducts = orderInfo.products;
@@ -16,7 +16,7 @@ angular.module("user").controller("orderDetailsController", ["$scope", "$routePa
         //Hämta detaljerad info om produkterna
 
         angular.forEach(orderProducts, function(product) {
-            userFactoryService.getProductById(product.productId).then(function(response) {
+            productServiceFactory.getProductById(product.productId).then(function(response) {
                 productDetails.push({
                     id: response.data.id,
                     name: response.data.name,

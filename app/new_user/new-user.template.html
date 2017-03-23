@@ -20,7 +20,7 @@
     </div>
     <div class="form-group" ng-class="{ 'has-error': newuser.postalcode.$invalid && newuser.postalcode.$touched}">
         <label for="postalcode">Postkod<br><span class="error" ng-if="newuser.postalcode.$invalid && newuser.postalcode.$touched">Du måste fylla i din postkod</span></label>
-        <input type="number" class="form-control" id="postalcode" name="postalcode" placeholder="Postkod" ng-model="postalnumber" required>
+        <input type="number" class="form-control" id="postalcode" name="postalcode" placeholder="Postkod" ng-model="postalcode" required>
     </div>
     <div class="form-group" ng-class="{ 'has-error': newuser.city.$invalid && newuser.city.$touched}">
         <label for="city">Stad<br><span class="error" ng-if="newuser.city.$invalid && newuser.city.$touched">Du måste fylla i din stad</span></label>
@@ -38,7 +38,8 @@
         <input type="password" class="form-control" id="password" name="password" placeholder="Lösenord" ng-model="password" required>
     </div>
 
-    <button ng-disabled="newuser.$invalid" class="btn btn-default" ng-click="create()">Registrera</button>
+    <button ng-disabled="newuser.$invalid" class="btn btn-danger" ng-click="create()">Registrera</button>
+    <a class="btn btn-primary" href="/">Avbryt</a>
     <p class="error">{{errorMessage}}</p>
 </form>
 </div>

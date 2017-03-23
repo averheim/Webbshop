@@ -1,69 +1,8 @@
-var cart = [];
-
 angular.module("cart")
     .controller("cartController", ["$scope", "$location", "cartServiceFactory", "loginServiceFactory",
         function ($scope, $location, cartServiceFactory, loginServiceFactory) {
-
-
-
-
-            $scope.addToCart = function (product) {
-                if (cart.length == 0){
-                    product.amount = $scope.amount;
-                    cart.push(product);
-                    console.log("Första produkten lades till");
-                } else {
-                    for (var i = 0; i < cart.length; i++){
-                        if (cart[i].id == product.id){
-                            cart[i].amount = $scope.amount;
-                            console.log("Produkten inkrementerades med: " + $scope.amount);
-                            return;
-                        }
-                    }
-                    product.amount = $scope.amount;
-                    cart.push(product);
-                    console.log("Ny produkt lades till");
-                }
-            };
-
-
-
-
-
-
-
-
-
-        $scope.addToCart1 = function (product) {
-
-            if (cart.length == 0){
-                product.amount = $scope.amount.value;
-                cart.push(product);
-                $scope.amount.value = 1;
-                console.log("Första produkten lades till");
-            } else {
-                for (var i = 0; i < cart.length; i++){
-                    if (cart[i].id == product.id){
-                        cart[i].amount += $scope.amount.value;
-                        console.log("Produkten inkrementerades med: " + $scope.amount.value);
-                        $scope.amount.value = 1;
-                        return;
-                    }
-                }
-                product.amount = $scope.amount.value;
-                cart.push(product);
-                $scope.amount.value = 1;
-                console.log("Ny produkt lades till");
-            }
-        };
-
-        $scope.removeFromCart = function (product) {
-
-            var index = cart.indexOf(product);
-            if (index >-1){
-                cart.splice(index, 1);
-            }
-        };
+        var cart = cartServiceFactory.getCart();
+        $scope.cart = cart;
 
         $scope.sendOrder = function () {
             if (loginServiceFactory.isLoggedIn() == true){
@@ -97,5 +36,9 @@ angular.module("cart")
             $scope.totalAmount = totalAmount;
 
         }
-        $scope.cart = cart;
+
+        $scope.removeFromCart = function (product) {
+            cartServiceFactory.removeFromCart(product);
+        }
+
 }]);

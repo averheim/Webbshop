@@ -8,12 +8,6 @@ angular.module("user").factory("userFactoryService", ["$http", function ($http) 
         },
         getUserOrders   :   function (userId) {
             return $http.get("http://nackbutik.azurewebsites.net/api/order?customerid=" + userId);
-        },
-        getOrderById    :   function (id) {
-            return $http.get("http://nackbutik.azurewebsites.net/api/order/" + id);
-        },
-        getProductById  :   function (id) {
-            return $http.get("http://nackbutik.azurewebsites.net/api/product/" + id);
-        }
+         }
     }
 }]);

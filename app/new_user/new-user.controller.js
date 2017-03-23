@@ -9,7 +9,7 @@ angular.module("newUser").controller("newUserController", ["$scope", "$location"
             phone: $scope.phone,
             password: $scope.password,
             address: $scope.address,
-            postalCode: $scope.postalnumber,
+            postalCode: $scope.postalcode,
             city: $scope.city
         };
 

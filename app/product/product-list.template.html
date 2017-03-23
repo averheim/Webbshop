@@ -1,5 +1,5 @@
 <ul class="list-group">
-    <li class="list-group-item" ng-repeat="product in product | filter: {categoryId:categoryFilter} | filter: search">
+    <li class="list-group-item" ng-repeat="product in products | filter: {categoryId:categoryFilter} | filter: search">
         <div class="row">
             <div class="col-md-5">
                 <img class="product-img" ng-src="{{product.imageUrl}}" alt="{{product.description}}">
@@ -17,17 +17,14 @@
                 </div>
 
                 <form>
-                    <div class="form-group col-md-4 col-md-offset-7" ng-controller="cartController">
-                        <button class="btn btn-danger"  ng-click="addToCart(product)" ng-disabled="checkStock(product.unitsInStock)">Lägg till i kungvagn</button>
+                    <div class="form-group col-md-4 col-md-offset-7">
 <!--
                         <input type="number" min="1" max="{{product.unitsInStock}}" value="1" class="form-control" ng-model="amount.value" ng-disabled="checkStock(product.unitsInStock)" required>
 -->
-
+                        <button class="btn btn-danger"  ng-click="addToCart(product, amount)" ng-disabled="checkStock(product.unitsInStock)">Lägg till i kungvagn</button>
                         <select class="form-control" ng-model="amount" ng-init="amount='1'">
                             <option ng-repeat="amount in productsInStock(product)" value="{{amount}}" ng-disabled="checkStock(product.unitsInStock)">{{amount}}</option>
                         </select>
-
-
                     </div>
                 </form>
             </div>

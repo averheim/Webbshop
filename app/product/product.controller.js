@@ -1,18 +1,26 @@
 angular.module("product")
-    .controller("productController", ["$scope", "$location", "productServiceFactory",
-        function ($scope, $location, productServiceFactory) {
+    .controller("productController", ["$scope", "$location", "productServiceFactory","cartServiceFactory",
+        function ($scope, $location, productServiceFactory,cartServiceFactory) {
 
-            productServiceFactory.getProducts().then(function (response) {
-                $scope.product = response.data;
-            });
+            $scope.$watch(function () {
+                    return productServiceFactory.getChosenCategory();
+                }, function (value) {
+                    $scope.categoryFilter = value;
+                }
+            );
 
-            $scope.categoryChosen = function (category) {
-                $location.url("/");
-                $scope.categoryFilter = category.id;
+            $scope.addToCart = function (product, amount) {
+                cartServiceFactory.addToCart(product, amount);
             };
 
+
+            productServiceFactory.getProducts().then(function (response) {
+                $scope.products = response.data;
+            });
+
+
             $scope.checkStock = function (unitsInStock) {
-                if (unitsInStock >=1){
+                if (unitsInStock >= 1) {
                     return false;
                 } else {
                     return true;
@@ -22,7 +30,7 @@ angular.module("product")
             $scope.productsInStock = function (product) {
 
                 var inStock = [];
-                for (var i = 1; i < product.unitsInStock + 1; i++){
+                for (var i = 1; i < product.unitsInStock + 1; i++) {
                     inStock.push(i);
                 }
                 return inStock;

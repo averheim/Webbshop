@@ -1,4 +1,4 @@
-<div class="col-md-5 col-md-offset-5">
+<div class="col-md-5 col-md-offset-3 jumbotron">
     <form name="loginform">
         <div class="form-group" ng-class="{ 'has-error': loginform.email.$invalid && loginform.email.$touched}">
             <label for="email">Email address<br><span class="error" ng-if="loginform.email.$invalid && loginform.email.$touched">Du måste fylla i din email-adress</span></label>
@@ -9,7 +9,8 @@
             <input type="password" class="form-control" id="password" name="password" placeholder="Password" ng-model="password" required>
         </div>
 
-        <button ng-disabled="loginform.$invalid" class="btn btn-default" ng-click="logIn()">Logga in</button>
-        <a class="btn btn-danger" href="/new-user">Skapa ny användare</a>
+        <button ng-disabled="loginform.$invalid" class="btn btn-danger" ng-click="logIn()">Logga in</button>
+        <a class="btn btn-primary" href="/new-user">Skapa ny användare</a>
+        <p ng-show="loginFailed">Kontrollera epost och användarnamn</p>
     </form>
 </div>

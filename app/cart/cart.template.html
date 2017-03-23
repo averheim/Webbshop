@@ -2,18 +2,18 @@
 
 
 <ul class="list-group" ng-controller="cartController" >
-    <li class="list-group-item" ng-repeat="cart in cart">
+    <li class="list-group-item" ng-repeat="product in cart">
         <div class="row">
             <div class="col-md-5">
-                <img class="product-img" ng-src="{{cart.imageUrl}}" alt="">
+                <img class="product-img" ng-src="{{product.imageUrl}}" alt="">
             </div>
             <div class="col-md-4">
-                <p>{{cart.name}}</p>
-                <p>Pris: {{cart.price}};-</p>
-                <p>Antal: {{cart.amount}}</p>
+                <p>{{product.name}}</p>
+                <p>Pris: {{product.price}};-</p>
+                <p>Antal: {{product.amount}}</p>
             </div>
             <div class="col-md-1">
-                <button class="btn btn-danger" ng-click="removeFromCart(cart)">Ta bort</button>
+                <button class="btn btn-danger" ng-click="removeFromCart(product)">Ta bort</button>
             </div>
         </div>
     </li>

@@ -55,18 +55,18 @@
 
 </head>
 
-<body ng-app="app" ng-controller="productController">
+<body ng-app="app" ng-controller="appController">
 <nav class="navbar navbar-inverse">
     <div class="container-fluid">
         <div class="navbar-header">
-            <a class="navbar-brand" href="/" ng-controller="categoryController" ng-click="categoryChosen(0)">NackButik</a>
+            <a class="navbar-brand" href="/">NackButik</a>
         </div>
         <ul class="nav navbar-nav">
-            <li><a href="/" ng-click="categoryChosen(0)">Alla produkter</a></li>
+            <li><a href="/" ng-click="categoryChosen()">Alla produkter</a></li>
             <li uib-dropdown ng-controller="categoryController">
                 <a uib-dropdown-toggle>Kategorier<span class="caret"></span></a>
                 <ul uib-dropdown-menu uib-collapse="!isCollapsed" class="dropdown-menu" >
-                    <li ng-repeat="category in categories" id="{{category.id}}" ng-click="categoryChosen(category)"  class="list-group-item"><a>{{category.name}}</a></li>
+                    <li ng-repeat="category in categories" ng-click="categoryChosen(category.id)"  class="list-group-item"><a>{{category.name}}</a></li>
                 </ul>
             </li>
             <li>
@@ -74,8 +74,10 @@
             </li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
-            <li><a href="/new-user"><span class="glyphicon glyphicon-user"></span> Skapa användare</a></li>
-            <li ng-controller="loginController"><a id="login" href="/login"><span class="glyphicon glyphicon-log-in"></span> Logga in</a></li>
+            <li><a ng-show="!loggedIn()" href="/new-user"><span class="glyphicon glyphicon-user"></span> Skapa användare</a></li>
+            <li><a ng-show="!loggedIn()" id="login" href="/login"><span class="glyphicon glyphicon-log-in"></span> Logga in</a></li>
+            <li><a ng-show="loggedIn()" id="user" href="/user"><span class="glyphicon glyphicon-log-in"></span> User</a></li>
+            <li><a ng-show="loggedIn()" ng-click="logOut()" id="logout" href="/"><span class="glyphicon glyphicon-log-in"></span> Logga ut</a></li>
         </ul>
         <form class="navbar-form navbar-right">
             <div class="form-group">
@@ -87,7 +89,7 @@
 </nav>
     <div class="container">
         <div class="row">
-            <div class="col-md-9 col-md-offset-1" ng-view="">
+            <div class="col-md-10 col-md-offset-1" ng-view="">
                 <!-- innehåll -->
             </div>
         </div>

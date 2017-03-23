@@ -1,44 +1,45 @@
 <div class="row" ng-init="getData()">
     <div class="col-md-5 jumbotron">
-        <form class="form-group">
-            <div class="form-group">
-                <label for="firstname">Förnamn</label>
-                <input type="text" id="firstname" class="form-control" ng-model="firstname">
+        <h2>Redigera kundinfo</h2>
+        <form class="form-group" name="userinfoform">
+            <div class="form-group" ng-class="{ 'has-error': userinfoform.firstname.$invalid && userinfoform.firstname.$touched}">
+                <label for="firstname">Förnamn<br><span class="error" ng-if="userinfoform.firstname.$invalid && userinfoform.firstname.$touched">Du måste fylla i ditt förnamn</span></label>
+                <input type="text" name="firstname" id="firstname" class="form-control" ng-model="firstname" required>
             </div>
-            <div class="form-group">
-                <label for="lastname">Efternamn</label>
-                <input type="text" id="lastname" class="form-control" ng-model="lastname">
+            <div class="form-group" ng-class="{ 'has-error': userinfoform.lastname.$invalid && userinfoform.lastname.$touched}">
+                <label for="lastname">Efternamn<br><span class="error" ng-if="userinfoform.lastname.$invalid && userinfoform.lastname.$touched">Du måste fylla i ditt efternamn</span></label>
+                <input type="text" name="lastname" id="lastname" class="form-control" ng-model="lastname" required>
             </div>
-            <div class="form-group">
-                <label for="email">Epost</label>
-                <input type="text" id="email" class="form-control" ng-model="email">
+            <div class="form-group" ng-class="{ 'has-error': userinfoform.email.$invalid && userinfoform.email.$touched}">
+                <label for="email">Epost<br><span class="error" ng-if="userinfoform.email.$invalid && userinfoform.email.$touched">Du måste fylla i din epost</span></label>
+                <input type="text" name="email" id="email" class="form-control" ng-model="email" required>
             </div>
-            <div class="form-group">
-                <label for="phone">Telefon</label>
-                <input type="text" id="phone" class="form-control" ng-model="phone">
+            <div class="form-group" ng-class="{ 'has-error': userinfoform.phone.$invalid && userinfoform.phone.$touched}">
+                <label for="phone">Telefon<br><span class="error" ng-if="userinfoform.phone.$invalid && userinfoform.phone.$touched">Du måste fylla i ditt telefonnummer</span></label>
+                <input type="text" name="phone" id="phone" class="form-control" ng-model="phone" required>
             </div>
-            <div class="form-group">
-                <label for="address">Adress</label>
-                <input type="text" id="address" class="form-control" ng-model="address">
+            <div class="form-group" ng-class="{ 'has-error': userinfoform.address.$invalid && userinfoform.address.$touched}">
+                <label for="address">Adress<br><span class="error" ng-if="userinfoform.address.$invalid && userinfoform.address.$touched">Du måste fylla i din adress</span></label>
+                <input type="text" name="address" id="address" class="form-control" ng-model="address" required>
             </div>
-            <div class="form-group">
-                <label for="postalcode">Postkod</label>
-                <input type="text" id="postalcode" class="form-control" ng-model="postalcode">
+            <div class="form-group" ng-class="{ 'has-error': userinfoform.postalcode.$invalid && userinfoform.postalcode.$touched}">
+                <label for="postalcode">Postkod<br><span class="error" ng-if="userinfoform.postalcode.$invalid && userinfoform.postalcode.$touched">Du måste fylla i din postkod</span></label>
+                <input type="text" name="postalcode" id="postalcode" class="form-control" ng-model="postalcode" required>
             </div>
-            <div class="form-group">
-                <label for="city">Stad</label>
-                <input type="text" id="city" class="form-control" ng-model="city">
+            <div class="form-group" ng-class="{ 'has-error': userinfoform.city.$invalid && userinfoform.city.$touched}">
+                <label for="city">Stad<br><span class="error" ng-if="userinfoform.city.$invalid && userinfoform.city.$touched">Du måste fylla i din stad</span></label>
+                <input type="text" name="city" id="city" class="form-control" ng-model="city" required>
             </div>
-            <div class="form-group">
+            <div class="form-group" ng-class="{ 'has-error': userinfoform.password.$invalid && userinfoform.password.$touched}">
+                <label for="password">Fyll i lösenord för att bekräfta<br><span class="error" ng-if="userinfoform.password.$invalid && userinfoform.password.$touched">Du måste fylla i ditt lösenord</span></label>
+                <input type="password" name="password" id="password" class="form-control" placeholder="Lösenord" ng-model="password" required>
+            </div>
 
-                <label for="password">Fyll i lösenord för att bekräfta</label>
-                <input type="password" id="password" class="form-control" placeholder="Lösenord" ng-model="password">
-            </div>
-
-            <button class="btn btn-danger" ng-click="updateUser()">Uppdatera</button>
+            <button ng-disabled="userinfoform.$invalid" class="btn btn-danger" ng-click="updateUser()">Uppdatera</button>
         </form>
     </div>
     <div class="col-md-7">
+        <h1>Orderhistorik</h1>
         <table class="table">
             <thead>
                 <th>Ordernummer</th>
@@ -50,6 +51,7 @@
                 <td><button class="btn" ng-click="showDetailInfo(order.id)">Detaljerad info</button></td>
             </tbody>
         </table>
+        <h2>Toalbelopp: {{totalAmount}}kr</h2>
 
     </div>
 </div>
