@@ -70,14 +70,14 @@
                 </ul>
             </li>
             <li>
-            <li><a href="/cart">Kundvagn</a></li>
+            <li><a href="/cart"><span class="glyphicon glyphicon-shopping-cart"></span> Kundvagn</a></li>
             </li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
             <li><a ng-show="!loggedIn()" href="/new-user"><span class="glyphicon glyphicon-user"></span> Skapa användare</a></li>
             <li><a ng-show="!loggedIn()" id="login" href="/login"><span class="glyphicon glyphicon-log-in"></span> Logga in</a></li>
-            <li><a ng-show="loggedIn()" id="user" href="/user"><span class="glyphicon glyphicon-log-in"></span> User</a></li>
-            <li><a ng-show="loggedIn()" ng-click="logOut()" id="logout" href="/"><span class="glyphicon glyphicon-log-in"></span> Logga ut</a></li>
+            <li><a ng-show="loggedIn()" id="user" href="/user"><span class="glyphicon glyphicon-user"></span> Kundsida</a></li>
+            <li><a ng-show="loggedIn()" ng-click="logOut()" id="logout" href="/"><span class="glyphicon glyphicon-log-out"></span> Logga ut</a></li>
         </ul>
         <form class="navbar-form navbar-right">
             <div class="form-group">

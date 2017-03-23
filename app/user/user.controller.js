@@ -24,10 +24,6 @@ angular.module("user").controller("userController", ["$scope", "$location", "$ht
                 angular.forEach(products, function (product) {
                     angular.forEach(allProducts, function (item) {
                         if(product.productId == item.id)  {
-                            console.log("Produkt id" + product.productId);
-                            console.log("Item id" + item.id);
-                            console.log("product" + product);
-                            console.log("Item id" + item);
                             total += (item.price * product.quantity);
                         }
                     })
@@ -68,17 +64,13 @@ angular.module("user").controller("userController", ["$scope", "$location", "$ht
             password    :   $scope.password
         };
 
-        console.log(user.customerId);
-        console.log($scope.firstname);
-        console.log($scope.lastname);
-        console.log($scope.email);
-        console.log($scope.phone);
-        console.log($scope.address);
-        console.log($scope.postalcode);
-        console.log($scope.city);
-        console.log($scope.password);
         userFactoryService.updateUserInfo(user.customerId, userInfo).then(function (response) {
             console.log(response);
+
+            userInfo.id = loginServiceFactory.getUserId();
+            delete userInfo['password'];
+            loginServiceFactory.setUser(userInfo);
+            console.log(loginServiceFactory.getUser());
         });
 
     };

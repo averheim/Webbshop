@@ -16,7 +16,6 @@ angular.module("newUser").controller("newUserController", ["$scope", "$location"
         newUserFactoryService.createNewCustomer(customer).then(function () {
             $location.url("/create-success");
         }, function () {
-            console.log("lol");
             $location.url("/new-user");
             $scope.errorMessage = "Ett error har uppstått. Försök igen!";
         });

@@ -18,8 +18,6 @@ angular.module("login").controller("loginController", ["$scope", "$location", "l
                 $scope.loginFailed = true;
             }
 
-        }, function (response) {
-            console.log(response.data.status)
         });
     }
 
